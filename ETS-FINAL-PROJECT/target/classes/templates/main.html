@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+	
+	  <nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+  		  <div class="navbar-header">
+   		    <a class="navbar-brand" >WebSiteName</a>
+ 	      </div>
+  		    <ul class="nav navbar-nav">
+     	      <li class="active"><a th:href="@{/}">Home</a></li>	
+      		</ul>
+   		    <ul class="nav navbar-nav navbar-right">
+      		  <li ><a th:href="@{/register/CustomerRegistrationForm}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li ><a th:href="@{/showMyLoginPage}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+  	 		</ul>
+ 	    </div>
+	  </nav>
+	
+	<div >
+	<div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="my-3 p-3">
+        <h1 style="margin-top:100px" class="display-5">Hotels</h1>
+      </div>
+      <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 20px; border-radius: 21px 21px 0 0;"></div>
+    </div>
+        <div class="container">
+	<!--   <img src="/images/hilton_istanbul.jpg" alt="Lights" width="400" height="300"> -->
+          <div class="row ">
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+               <h2>Hilton Istanbul Hotel</h2>
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="/images/hilton_istanbul.jpg" data-holder-rendered="true">
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      
+                      <a th:href="@{/customer/hilton-reservation}" class="btn btn-danger" role="button" aria-pressed="true">Login in order to Reserve</a>
+                    </div>
+              	  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+               <h2>Fairmont Quasar İstanbul</h2>
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="/images/fairmont.jpg" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                       <a th:href="@{/customer/fairmont-reservation}" class="btn btn-danger" role="button" aria-pressed="true">Login in order to Reserve</a>
+                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+               <h2>Four Seasons Bosphorus</h2>
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="/images/four_seasons.jpg" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                       <a th:href="@{/customer/four-seasons-reservation}" class="btn btn-danger" role="button" aria-pressed="true">Login in order to Reserve</a>
+                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+		  </div>
+        </div>
+      </div>
+
+	<!--  
+	<hr>
+	 		
+	<br>
+		<div sec:authorize="hasRole('CUSTOMER')">
+			
+		User: <span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+		Role(s): <span th:text="${#authentication.getPrincipal().authorities}"></span>		
+	
+		</div>
+		<br>
+		<div sec:authorize="hasAnyRole('ADMIN','MANAGER','CUSTOMER','CHEF')">
+		<form  action="#" th:action="@{/logout}"
+						  method="POST">
+		
+		<input type="submit" value="Logout"/>
+	</form>
+		</div> -->
+</body>
+</html>

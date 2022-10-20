@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+
+  
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+  		  <div class="navbar-header">
+   		    <a class="navbar-brand" >WebSiteName</a>
+ 	      </div>
+  		    <ul class="nav navbar-nav">
+     	       <li class="active"><a th:href="@{/admin/information}">Home</a></li>
+      		</ul>
+   		    <ul class="nav navbar-nav navbar-right">
+              <li style="padding:10px" ><form  action="#" th:action="@{/logout}"
+						  method="POST">
+		<button  type="submit" class="btn btn-outline-secondary btn-sm">
+          <span class="glyphicon glyphicon-log-out"></span> Log out
+        </button>
+		
+		</form></li>
+  	 		</ul>
+ 	    </div>
+	  </nav>
+	<div class="container">
+
+	<h3>Kitchen Orders</h3>
+	<hr>
+	
+	
+	
+	<table class="table table-bordered table-striped table-hover">
+		<thead class="table-dark">
+			<tr>
+				<th>Burger number</th>
+				<th>Iskender number</th>
+				<th>Kebap number</th>
+				<th>Tost number</th>
+				<th>Kofte number</th>
+				<th>Ice cream number</th>
+				<th>Ayran number</th>
+				<th>Cola number</th>
+				<th>Fruit Juice number</th>
+				<th style="width:50px">Action</th>
+				
+				
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr  th:each="tempOrders : ${inventoryOrders}">
+				<td  th:text="${tempOrders.burgerNumber} + '(' + ${inventory.burgerNumber} + ')' " />
+				<td  th:text="${tempOrders.iskenderNumber} + '(' + ${inventory.iskenderNumber} + ')' " />
+				<td  th:text="${tempOrders.kebapNumber} + '(' + ${inventory.kebapNumber} + ')' " />
+				<td  th:text="${tempOrders.tostNumber} + '(' + ${inventory.tostNumber} + ')' " />
+				<td  th:text="${tempOrders.kofteNumber} + '(' + ${inventory.kofteNumber} + ')' " />
+				<td  th:text="${tempOrders.iceNumber} + '(' + ${inventory.iceNumber} + ')' " />
+				<td  th:text="${tempOrders.ayranNumber} + '(' + ${inventory.ayranNumber} + ')' " />
+				<td  th:text="${tempOrders.colaNumber} + '(' + ${inventory.colaNumber} + ')' " />
+				<td  th:text="${tempOrders.fruitNumber} + '(' + ${inventory.fruitNumber} + ')' " />
+				<td >
+					<div style="width:125px"class="float-container">
+						<div style="width: 30%;float:left" class="float-child">
+  						  <form  action="#" th:action="@{/admin/processKitchenOrder(kitchenOrderId=${tempOrders.id})}"
+						 		method="POST">
+								<input class="btn btn-success" type="submit" value="Order"/>
+						 	</form>	
+ 					    </div>
+  						<div style="width: 50%;padding-left:25px;float:left" class="float-child">
+   						  	<form  action="#" th:action="@{/admin/processDeleteKitchenOrder(kitchenOrderId=${tempOrders.id})}"
+						 		method="POST">
+								<input class="btn btn-danger" type="submit" value="Delete"/>
+							</form>	
+  						</div>
+  					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	
+	
+	
+	
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h2>ACCESS DENIED!!!</h2>
+
+<hr>
+	
+	<div sec:authorize="hasRole('ADMIN')">
+		<a th:href="@{/admin/information}">Back to Admin Page</a>	
+	</div>
+	<div sec:authorize="hasRole('MANAGER')">
+		<a th:href="@{/manager/information}">Back to Manager Page</a>	
+	</div>
+	<div sec:authorize="hasRole('CUSTOMER')">
+		<a th:href="@{/customer/information}">Back to Customer Page</a>	
+	</div>
+	<div sec:authorize="hasRole('CHEF')">
+		<a th:href="@{/chef/information}">Back to Chef Page</a>	
+	</div>
+
+</body>
+</html>

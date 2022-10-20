@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+
+
+
+
+<nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+  		  <div class="navbar-header">
+   		    <a class="navbar-brand" href="#">WebSiteName</a>
+ 	      </div>
+  		    <ul class="nav navbar-nav">
+     	       <li class="active"><a th:href="@{/customer/information}">Home</a></li>
+     	      <li class="active"><a th:href="@{/customer/my-reservations}">MyReservations</a></li>
+      		</ul>
+   		    <ul class="nav navbar-nav navbar-right">
+      		   <li style="padding:10px" ><form  action="#" th:action="@{/logout}"
+						  method="POST">
+		<button  type="submit" class="btn btn-outline-secondary btn-sm">
+          <span class="glyphicon glyphicon-log-out"></span> Log out
+        </button>
+		</form></li>
+           </ul>
+ 	    </div>
+	  </nav>
+
+
+<div class="container">
+ 
+  <div class="row">
+  
+  	<div class="col-md-4">
+    
+      <div class="thumbnail">
+   		  <h2 style="text-align: center;">Hilton Istanbul Hotel</h2>
+        
+          <img src="/images/hilton_istanbul.jpg" alt="Lights" width="400" height="300">
+          <div class="caption">
+            <p>Hilton Istanbul Bosphorus, a 10-minute walk from the city's most popular 
+            shopping and touristic spots, Nişantaşı and Taksim, welcomes its guests with a view from its lush gardens to the Bosphorus.</p>
+			<div class="row">
+			<i class="fa-solid fa-wifi col-md-4">Wifi</i>
+			<i class="fa-solid fa-person-swimming col-md-4">Pool</i>
+			<i class="fa-solid fa-mug-saucer col-md-4">Breakfast</i>
+			
+			</div>
+			<br>
+			<p>1500$ night</p>
+          </div>
+        	 <div style="text-align: center;">
+       			<a th:href="@{/customer/hilton-reservation}" class="btn btn-danger">Reserve</a>
+    	   </div>
+      </div>
+    </div>
+   </div>
+</div>
+
+</body>
+</html>
+
+
