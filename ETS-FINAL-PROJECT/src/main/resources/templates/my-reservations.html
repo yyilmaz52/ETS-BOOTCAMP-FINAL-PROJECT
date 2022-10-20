@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+     
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+ 
+  
+</head>
+<body >
+	
+	<nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+  		  <div class="navbar-header">
+   		    <a class="navbar-brand" href="#">WebSiteName</a>
+ 	      </div>
+  		    <ul class="nav navbar-nav">
+     	       <li class="active"><a th:href="@{/customer/information}">Home</a></li>
+     	      <li class="active"><a th:href="@{/customer/my-reservations}">MyReservations</a></li>
+      		</ul>
+   		    <ul class="nav navbar-nav navbar-right">
+      		  
+              <li style="padding:10px" ><form  action="#" th:action="@{/logout}"
+						  method="POST">
+		<button  type="submit" class="btn btn-outline-secondary btn-sm">
+          <span class="glyphicon glyphicon-log-out"></span> Log out
+        </button>
+		</form></li>
+		
+		
+  	 		</ul>
+ 	    </div>
+	  </nav>
+
+	<div class="container">
+
+	<h3>User Directory</h3>
+	<hr>
+	
+	
+	
+	<table class="table table-bordered table-striped table-hover">
+		<thead class="thead-dark">
+			<tr>
+				<th>Reservation Id</th>
+				<th>Hotel Name</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Phone Number</th>
+				<th>Email</th>
+				<th>Check-in</th>
+				<th>Check-Out</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr  th:each="tempReservation : ${reservations}">
+				<td th:text="${tempReservation.id}" />
+				<td th:text="${tempReservation.hotelName}" />
+				<td th:text="${tempReservation.firstName}" />
+				<td th:text="${tempReservation.lastName}" />
+				
+				<td th:text="${tempReservation.phoneNumber}" />
+				<td th:text="${tempReservation.email}" />
+				<td th:text="${tempReservation.checkIn}">
+				<td th:text="${tempReservation.checkOut}">
+		
+			
+				<td style="width:250px">
+					
+					<div  style="float:left">
+					<a  th:href="@{/customer/reservation-check-in(reservationId=${tempReservation.id})}"
+						 class="btn btn-success btn-sm ">
+						Check-in
+					</a>	
+					</div> 
+					<div  style="float:left;padding-left:10px">	 
+					<a  th:href="@{/customer/update-reservation(reservationId=${tempReservation.id})}"
+						 class="btn btn-info btn-sm ">
+						Update
+					</a>
+					</div> 
+					<div style="float:left;padding-left:10px" >
+					<form  action="#" th:action="@{/customer/processDeleteReservation(reservationId=${tempReservation.id})}"
+						   onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false"
+						   method="POST">
+						<input class="btn btn-danger btn-sm" type="submit" value="Delete"/>
+					</form>	 
+					</div> 
+					
+				</td>
+			</tr>
+				
+			
+		</tbody>
+	</table>
+	
+	
+	
+	
+	
+</div>
+</body>
+</html>

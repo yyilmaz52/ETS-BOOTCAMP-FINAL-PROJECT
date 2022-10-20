@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+
+
+
+
+   <nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+  		  <div class="navbar-header">
+   		    <a class="navbar-brand" >WebSiteName</a>
+ 	      </div>
+  		    <ul class="nav navbar-nav">
+     	       <li class="active"><a th:href="@{/customer/information}">Home</a></li>
+     	      <li class="active"><a th:href="@{/customer/my-reservations}">MyReservations</a></li>
+      		</ul>
+   		    <ul class="nav navbar-nav navbar-right">
+              <li style="padding:10px">
+              <form  action="#" th:action="@{/logout}" method="POST">
+				<button  type="submit" class="btn btn-outline-secondary btn-sm">
+        		  <span class="glyphicon glyphicon-log-out"></span> Log out
+      		    </button>
+		   	  </form></li>
+  	 		</ul>
+ 	    </div>
+	  </nav>
+
+<form  action="#"  th:action="@{/food/addToBasket(roomId=${room.id})}" 
+						  th:object="${order}"  method="POST">
+						   <input type="hidden" th:field="*{total}" />
+<div class="row" style="padding:30px">
+	<div class="col-md-2">	</div>
+   		<div class="col-md-8" style="padding:50px">
+  			<div class="row">
+ 			  <div class="col-md-4" >
+   			  
+      	 		<img src="/images/burger.jpeg" alt="Lights" width="200" height="200">
+         		 <div class="caption">
+          		 	 <h3>Burger</h3>
+          		 	 <h5>10$</h5>
+					 <input style="width:150px" th:field="*{burgerNumber}" type="number" step="1" min="0" max="10"   
+                     class="form-control" placeholder="Number">		
+				</div>
+        	
+  		    </div>
+  		  	<div class="col-md-4" >
+   			   
+      	 		<img src="/images/iskender.jpg" alt="Lights" width="200" height="200">
+         		 <div class="caption">
+          		 	  <h3>Iskender</h3>
+          		 	  <h5>20$</h5>
+					 <input style="width:150px" th:field="*{iskenderNumber}" type="number" step="1" min="0" max="10"   
+                      class="form-control" placeholder="Number">		
+				</div>
+        	
+  		    </div>
+  		  	<div class="col-md-4" >
+   			  
+      	 		<img src="/images/kebap.jpg" alt="Lights" width="200" height="200">
+         		 <div class="caption">
+          		 	  <h3>Kebap</h3>
+          		 	  <h5>15$</h5>
+					  <input style="width:150px" th:field="*{kebapNumber}" type="number" step="1" min="0" max="10"   
+                      class="form-control" placeholder="Number">		
+				</div>
+        	
+  		    </div>
+		 </div>
+		 <hr>
+		 <div class="row">
+ 			  <div class="col-md-4" >
+   			   
+      	 		<img src="/images/tost.jpg" alt="Lights" width="200" height="200">
+         		 <div class="caption">
+          		 	<h3>Tost</h3>
+          		 	<h5>5$</h5>
+					 <input style="width:150px" th:field="*{tostNumber}" type="number" step="1" min="0" max="10"   
+                       class="form-control" placeholder="Number">		
+				</div>
+        	 
+  		    </div>
+  		  	<div class="col-md-4" >
+   			  
+      	 		<img src="/images/kofte.jpg" alt="Lights" width="200" height="200">
+         		 <div class="caption">
+          		 	 <h3>Kofte</h3>
+          		 	 <h5>20$</h5>
+					 <input style="width:150px" th:field="*{kofteNumber}" type="number" step="1" min="0" max="10"   
+                      class="form-control" placeholder="Number">		
+				</div>
+        	 
+  		    </div>
+  		  	<div class="col-md-4" >
+   			   
+      	 		<img src="/images/dondurma.jpg" alt="Lights" width="200" height="200">
+         		 <div class="caption">
+          		 	  <h3>Dondurma</h3>
+          		 	  <h5>5$</h5>
+					  <input style="width:150px" th:field="*{iceNumber}" type="number" step="1" min="0" max="10"   
+                      class="form-control" placeholder="Number">		
+				</div>
+        	
+  		    </div>
+		 </div>
+		 <hr>
+ 		 <div class="row">
+ 			  <div class="col-md-4" >
+   			   
+      	 		<img src="/images/ayran.jpg" alt="Lights" width="200" height="200">
+         		 <div class="caption">
+          		 	<h3>Ayran</h3>
+          		 	<h5>5$</h5>
+					<input style="width:150px" th:field="*{ayranNumber}" type="number" step="1" min="0" max="10"   
+                      class="form-control" placeholder="Number">		
+				</div>
+        	
+  		    </div>
+  		  	<div class="col-md-4" >
+   			   
+      	 		<img src="/images/cola.jpg" alt="Lights" width="200" height="200">
+         		 <div class="caption">
+          		 	  <h3>Cola</h3>
+          		 	  <h5>8$</h5>
+					 <input style="width:150px" th:field="*{colaNumber}" type="number" step="1" min="0" max="10"   
+                      class="form-control" placeholder="Number">		
+				</div>
+        	 
+  		    </div>
+  		  	<div class="col-md-4" >
+   			   
+      	 		<img src="/images/fruit.jpg" alt="Lights" width="200" height="200">
+         		 <div class="caption">
+          		 	  <h3>Fruit Juice</h3>
+          		 	  <h5>3$</h5>
+					 <input style="width:150px" th:field="*{fruitNumber}" type="number" step="1" min="0" max="10"   
+                      class="form-control" placeholder="Number">		
+				</div>
+        	 
+  		    </div>
+  		    
+		 </div>
+		  <div class="row">
+			<div class="col-md-3"></div>
+		  		<div class="col-md-7">
+		  			 <div style="margin-top:30px; text-align:center" class="form-group">						
+						<div class="col-sm-6 controls">
+						 <button type="submit" class="btn btn-danger btn-lg">Order</button> 
+						</div>
+					</div>
+		  		</div>
+ 			
+          </div>
+  			
+   			
+   
+		</div>
+	<div class="col-md-2"></div>
+</div>
+		
+</form>
+</body>
+</html>
+
+

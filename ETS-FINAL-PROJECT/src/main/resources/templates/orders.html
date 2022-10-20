@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+
+	 <nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+  		  <div class="navbar-header">
+   		    <a class="navbar-brand" href="#">WebSiteName</a>
+ 	      </div>
+  		    <ul class="nav navbar-nav">
+     	       <li class="active"><a th:href="@{/chef/information}">Home</a></li>
+      		</ul>
+   		    <ul class="nav navbar-nav navbar-right">
+              <li style="padding:10px">
+              <form  action="#" th:action="@{/logout}" method="POST">
+				<button  type="submit" class="btn btn-outline-secondary btn-sm">
+         		 <span class="glyphicon glyphicon-log-out"></span> Log out
+       			 </button>
+			  </form></li>
+            </ul>
+ 	    </div>
+	  </nav>
+		
+		
+		
+		
+		<table class="table table-bordered table-striped table-hover">
+		<thead class="table-dark">
+			<tr>
+				<th>Order</th>
+				<th>Status</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>	
+			<tr th:if="${tempOrder.status == 'waiting'}" th:each="tempOrder : ${orders}">
+				<td>
+					<span th:text="'Order id: ' +${tempOrder.id}"></span>
+   			 	 <span th:if="${tempOrder.burgerNumber > 0}"><br></span>
+   				 <span th:if="${tempOrder.burgerNumber > 0}" th:text="'Burger x'+${tempOrder.burgerNumber} "></span>
+   				 <span th:if="${tempOrder.iskenderNumber > 0}"><br></span>
+   				 <span th:if="${tempOrder.iskenderNumber > 0}" th:text="'Iskender x'+${tempOrder.iskenderNumber}"></span>
+   				 <span th:if="${tempOrder.kebapNumber > 0}"><br></span>
+   				 <span th:if="${tempOrder.kebapNumber > 0}" th:text="'Kebap x'+${tempOrder.kebapNumber} "></span>
+   				 <span th:if="${tempOrder.tostNumber > 0}"><br></span>
+   				 <span th:if="${tempOrder.tostNumber > 0}" th:text="'Tost x'+${tempOrder.tostNumber} "></span>
+   				 <span th:if="${tempOrder.kofteNumber > 0}"><br></span>
+   				 <span th:if="${tempOrder.kofteNumber > 0}" th:text="'Kofte x'+${tempOrder.kofteNumber} "></span>
+   				 <span th:if="${tempOrder.iceNumber > 0}"><br></span>
+   				 <span th:if="${tempOrder.iceNumber > 0}" th:text="'Ice Cream x'+${tempOrder.iceNumber }"></span>
+   				 <span th:if="${tempOrder.ayranNumber > 0}"><br></span>
+   				 <span th:if="${tempOrder.ayranNumber > 0}" th:text="'Ayran x'+${tempOrder.ayranNumber} "></span>
+   				 <span th:if="${tempOrder.colaNumber > 0}"><br></span>
+   				 <span th:if="${tempOrder.colaNumber > 0}" th:text="'Cola x'+${tempOrder.colaNumber} "></span>
+   				 <span th:if="${tempOrder.fruitNumber > 0}"><br></span>
+   				 <span th:if="${tempOrder.fruitNumber > 0}" th:text="'Fruit Juice x'+${tempOrder.fruitNumber }"></span>
+   				 <br>
+				</td>
+				<td><span th:text="${tempOrder.status}"></span></td>
+				<td>
+					<form style="padding-top:20px" action="#" th:action="@{/chef/deliver-order(orderId=${tempOrder.id})}" method="POST">
+						<input  class="btn btn-success btn-sm " type="submit" value="Deliver"/>
+					</form>
+					<br>
+				</td>
+			
+				
+			</tr>
+		</tbody>
+	</table>
+			
+	
+</body>
+
+</html>
+
+
+
+
+
+
+

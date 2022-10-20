@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+	 <nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+  		  <div class="navbar-header">
+   		    <a class="navbar-brand" >WebSiteName</a>
+ 	      </div>
+  		    <ul class="nav navbar-nav">
+     	       <li class="active"><a th:href="@{/manager/information}">Home</a></li>
+      		</ul>
+   		    <ul class="nav navbar-nav navbar-right">
+              <li style="padding:10px" ><form  action="#" th:action="@{/logout}"
+						  method="POST">
+		<button  type="submit" class="btn btn-outline-secondary btn-sm">
+          <span class="glyphicon glyphicon-log-out"></span> Log out
+        </button>
+		
+		</form></li>
+             
+  	 		</ul>
+ 	    </div>
+	  </nav>
+<body>
+	  <div class="container">
+	  	
+	  	<div style="display:flex;justify-content: center">
+	  	  <div >
+	  		<h2>MANAGER</h2>
+	  			<!-- <br>
+	  			User name: <span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+				<br>
+				Role(s): <span th:text="${#authentication.getPrincipal().authorities}"></span>	 -->
+	      </div>
+		</div>	
+		<div style="display:flex;justify-content: center" class="row">
+		<div style="padding:10px" class="col-4">
+			<a th:href="@{/manager/rooms-to-clean}" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Rooms to clean</a>
+		</div >
+		</div>
+	</div>
+	
+</body>
+</html>
